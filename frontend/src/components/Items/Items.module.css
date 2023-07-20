@@ -1,0 +1,59 @@
+.item {
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: fit-content;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: fit-content;
+}
+
+.item_name {
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.checkbox {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  border-radius: 5px;
+  border: 1px solid #000;
+  background: #FFF;
+  display: inline;
+}
+
+.checkbox:hover, .item_name:hover {
+  cursor: pointer;
+}
+
+.checkbox:checked ~ .item_name.crossed_out {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+.pen, .close {
+  width: 12px;
+  height: 12px;
+  flex-shrink: 0;
+  visibility: hidden;
+}
+
+.pen:hover, .close:hover {
+  cursor: pointer;
+}
+
+.item:hover .pen {
+  visibility: visible;
+}
+
+.item:hover .close {
+  visibility: visible;
+}
