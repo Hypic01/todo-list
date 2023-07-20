@@ -2,24 +2,24 @@
   background: #EDFF82;
   width: 100vw;
   height: 100vh;
-  padding: 100px 130px;
+  padding: 5%;
   display: grid;
   grid-template-rows: min-content 1fr min-content;
 }
 
-
 .header {
   color: #000;
   font-family: Outfit;
-  font-size: 72px;
+  font-size: 54px;
   font-style: normal;
   font-weight: 600;
   line-height: normal;
-  margin-bottom: 60px;
+  margin-bottom: 3%;
   flex-shrink: 0;
 }
 
 .items {
   display: flex;
   flex-direction: column;
+  overflow: scroll;
 }
