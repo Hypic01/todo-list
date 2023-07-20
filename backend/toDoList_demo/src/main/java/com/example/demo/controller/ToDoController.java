@@ -28,7 +28,7 @@ public class ToDoController {
 		return repo.findAll();
 	}
 	
-	@GetMapping("/todos/{tdid}")
+	@GetMapping("/todo/{tdid}")
 	@ResponseBody
 	public Optional<ToDo> getToDos(@PathVariable("tdid") int tdId) {
 		return repo.findById(tdId);
@@ -36,6 +36,7 @@ public class ToDoController {
 	
 	@PostMapping(path = "/todo", consumes = "application/json")
 	public void addToDo(@RequestBody ToDo toDo) {
+		System.out.println(toDo.toString());
 		repo.save(toDo);
 	}
 	
@@ -62,7 +63,7 @@ public class ToDoController {
 			return new ErrorType("ERROR_NO_SUCH_ELEMENT");
 		else {
 			ToDo toDo = repo.findById(tdId).orElse(null);
-			repo.save(new ToDo(toDo.getTdId(), toDo.getTdMsg(), true));
+			repo.save(new ToDo(toDo.getTdId(), toDo.getTdMsg(), !toDo.isTdDone()));
 			return new ErrorType("NO_ERROR");
 		}
 	}

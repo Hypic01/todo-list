@@ -21,6 +21,13 @@ public class ToDo {
 		this.tdDone = tdDone;
 	}
 	
+	public ToDo(int tdId, String tdMsg) {
+		super();
+		this.tdId = tdId;
+		this.tdMsg = tdMsg;
+		this.tdDone = false;
+	}
+	
 	public int getTdId() {
 		return tdId;
 	}
