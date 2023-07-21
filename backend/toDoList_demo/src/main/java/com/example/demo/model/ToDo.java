@@ -13,19 +13,19 @@ public class ToDo {
 	public ToDo() {
 		super();
 	}
-	
-	public ToDo(int tdId, String tdMsg, boolean tdDone) {
-		super();
-		this.tdId = tdId;
-		this.tdMsg = tdMsg;
-		this.tdDone = tdDone;
-	}
-	
+
 	public ToDo(int tdId, String tdMsg) {
 		super();
 		this.tdId = tdId;
 		this.tdMsg = tdMsg;
 		this.tdDone = false;
+	}
+
+	public ToDo(int tdId, String tdMsg, boolean tdDone) {
+		super();
+		this.tdId = tdId;
+		this.tdMsg = tdMsg;
+		this.tdDone = tdDone;
 	}
 	
 	public int getTdId() {

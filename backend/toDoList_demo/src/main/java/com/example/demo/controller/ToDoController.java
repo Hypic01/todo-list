@@ -16,9 +16,12 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.demo.dao.ToDoRepo;
 import com.example.demo.model.ErrorType;
 import com.example.demo.model.ToDo;
+import com.example.demo.service.ToDoService;
 
 @RestController
 public class ToDoController {
+	@Autowired
+	ToDoService serv;
 	@Autowired
 	ToDoRepo repo;
 	
@@ -36,35 +39,27 @@ public class ToDoController {
 	
 	@PostMapping(path = "/todo", consumes = "application/json")
 	public void addToDo(@RequestBody ToDo toDo) {
-		System.out.println(toDo.toString());
-		repo.save(toDo);
+		serv.saveToDo(toDo);
+	}
+
+	@PostMapping(path = "/todos", consumes = "application/json")
+	public void addToDos(@RequestBody List<ToDo> toDos) {
+		serv.saveToDos(toDos);
 	}
 	
 	@DeleteMapping("/todo/{tdid}")
 	public ErrorType deleteToDo(@PathVariable("tdid") int tdId) {
-		if(repo.findById(tdId).isEmpty())
-			return new ErrorType("ERROR_NO_SUCH_ELEMENT");
-		else {
-			ToDo toDo = repo.findById(tdId).orElse(null);
-			repo.delete(toDo);
-			return new ErrorType("NO_ERROR");
-		}
+		return serv.deleteToDo(tdId);
 	}
 	
 	@PutMapping(path="/todo", consumes = "application/json")
 	public void updateOrAddAlien(@RequestBody ToDo toDo) {
-		repo.save(toDo);
+		serv.saveToDo(toDo);
 	}
 	
 	@PutMapping("/todo/{tdid}")
 	@ResponseBody
 	public ErrorType doneToDo(@PathVariable("tdid") int tdId) {
-		if(repo.findById(tdId).isEmpty())
-			return new ErrorType("ERROR_NO_SUCH_ELEMENT");
-		else {
-			ToDo toDo = repo.findById(tdId).orElse(null);
-			repo.save(new ToDo(toDo.getTdId(), toDo.getTdMsg(), !toDo.isTdDone()));
-			return new ErrorType("NO_ERROR");
-		}
+		return serv.doneToDO(tdId);
 	}
 }
