@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import styles from './App.module.css';
 import Items from './components/Items/Items';
@@ -17,6 +17,18 @@ function App() {
     const updatedItemList = items.filter(i => i.name !== item);
     setItems(updatedItemList);
   };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch("https://localhost:8080/todos");
+      const data = await response.json();
+      // Do something with the response data
+      setItems(data);
+    };
+  
+    fetchData(); // Call the inner async function immediately
+  
+  }, []);
 
   return (
     <div className={styles.App}>
