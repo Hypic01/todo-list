@@ -24,6 +24,7 @@ function App() {
       const data = await response.json();
       // Do something with the response data
       setItems(data);
+      console.log(data);
     };
   
     fetchData(); // Call the inner async function immediately
