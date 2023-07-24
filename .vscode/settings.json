@@ -1,0 +1,6 @@
+{
+  "java.compile.nullAnalysis.mode": "automatic",
+  "java.configuration.maven.userSettings": "C:\\Users\\doldo\\.m2\\settings.xml",
+  "java.configuration.maven.globalSettings": "C:\\Users\\doldo\\.m2\\settings.xml",
+  "java.configuration.updateBuildConfiguration": "interactive"
+}
