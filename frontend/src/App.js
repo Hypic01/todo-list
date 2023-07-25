@@ -20,7 +20,7 @@ function App() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch("https://localhost:8080/todos");
+      const response = await fetch("/todos");
       const data = await response.json();
       // Do something with the response data
       setItems(data);
